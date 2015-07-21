@@ -2,6 +2,7 @@ package com.yairkukielka.slack.data.net;
 
 import com.google.gson.Gson;
 import com.yairkukielka.data.BuildConfig;
+import com.yairkukielka.slack.data.entity.SlackResponseUser;
 import com.yairkukielka.slack.data.entity.SlackResponseUserList;
 import com.yairkukielka.slack.data.entity.UserEntity;
 import com.yairkukielka.slack.data.entity.mapper.UserEntityDataMapper;
@@ -31,7 +32,8 @@ public class UserApiImpl implements UserApi {
 
     /**
      * Constructor
-     * @param gson gson parser.
+     *
+     * @param gson                 gson parser.
      * @param userEntityDataMapper {@link UserEntityDataMapper}.
      */
     @Inject
@@ -50,13 +52,25 @@ public class UserApiImpl implements UserApi {
         slackRestAdapter = restAdapter.create(SlackRestAdapter.class);
     }
 
+    /**
+     * Function that transforms a SlackResponseUserList to a List<User>
+     */
     private final Func1<SlackResponseUserList, List<User>> transformResponseToUserList =
             slackResponseUserList -> {
-                if (slackResponseUserList != null) {
-                    List<UserEntity> members = slackResponseUserList.getMembers();
-                    if (members != null && !members.isEmpty()) {
-                        return UserApiImpl.this.userEntityDataMapper.transform(members);
-                    }
+                List<UserEntity> members = slackResponseUserList.getMembers();
+                if (members != null && !members.isEmpty()) {
+                    return UserApiImpl.this.userEntityDataMapper.transform(members);
+                }
+                return null;
+            };
+
+    /**
+     * Function that transforms a SlackResponseUser to a User
+     */
+    private final Func1<SlackResponseUser, User> transformResponseToUser =
+            slackResponseUser -> {
+                if (slackResponseUser.getUser() != null) {
+                    UserApiImpl.this.userEntityDataMapper.transform(slackResponseUser.getUser());
                 }
                 return null;
             };
@@ -74,12 +88,15 @@ public class UserApiImpl implements UserApi {
 
 
     /**
-     * Retrieves an {@link Observable} which will emit a {@link UserEntity}.
+     * Retrieves an {@link Observable} which will emit a {@link User}.
      *
      * @param userId The user id used to get user data.
      */
-//    @Override
-//    public Observable<User> getUserById(String userId) {
-//        return slackRestAdapter.getUserById(userId);
-//    }
+    @Override
+    public Observable<User> getUserById(String userId) {
+        return slackRestAdapter.getUserById(userId)
+                // if error, throw NetworkConnectionException
+                .onErrorResumeNext(Observable.error(new NetworkConnectionException()))
+                .map(transformResponseToUser);
+    }
 }

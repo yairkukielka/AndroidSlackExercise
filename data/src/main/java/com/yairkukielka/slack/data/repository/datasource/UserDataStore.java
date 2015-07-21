@@ -13,14 +13,14 @@ import rx.Observable;
  */
 public interface UserDataStore {
     /**
-     * Get an {@link rx.Observable} which will emit a List of {@link UserEntity}.
+     * Get an {@link rx.Observable} which will emit a List of {@link User}.     *
      */
-    Observable<List<User>> getUserEntityList();
+    Observable<List<User>> getUserList();
 
     /**
      * Get an {@link rx.Observable} which will emit a {@link UserEntity} by its id.
      *
      * @param userId The id to retrieve user data.
      */
-    //Observable<User> getUserEntityDetails(final String userId);
+    Observable<User> getUserDetails(final String userId);
 }

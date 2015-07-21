@@ -21,5 +21,5 @@ public interface UserRepository {
      *
      * @param userId The user id used to retrieve user data.
      */
-    //Observable<User> getUser(final String userId);
+    Observable<User> getUser(final String userId);
 }

@@ -1,11 +1,12 @@
 package com.yairkukielka.slack.data.net;
 
+import com.yairkukielka.slack.data.entity.SlackResponseUser;
 import com.yairkukielka.slack.data.entity.SlackResponseUserList;
-import com.yairkukielka.slack.data.entity.UserEntity;
 
 import javax.inject.Singleton;
 
 import retrofit.http.GET;
+import retrofit.http.Query;
 import rx.Observable;
 
 /**
@@ -22,11 +23,11 @@ public interface SlackRestAdapter {
 
 
     /**
-     * Retrieves an {@link Observable} which will emit a {@link UserEntity}.
+     * Retrieves an {@link Observable} which will emit a {@link SlackResponseUser}.
      *
      * @param userId The user id used to get user data.
      */
-//    @GET("/users.info")
-//    Observable<SlackResponseUser> getUserEntityById(@Query("user") String userId);
+    @GET("/users.info")
+    Observable<SlackResponseUser> getUserById(@Query("user") String userId);
 
 }

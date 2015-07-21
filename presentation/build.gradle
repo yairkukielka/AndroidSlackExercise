@@ -58,6 +58,11 @@ android {
         exclude 'META-INF/LICENSE'
     }
 
+    lintOptions {
+        // lambdas are error to lint
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false

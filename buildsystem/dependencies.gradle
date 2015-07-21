@@ -8,8 +8,8 @@ ext {
     //Android
     androidBuildToolsVersion = "22.0.1"
     androidMinSdkVersion = 15
-    androidTargetSdkVersion = 22
-    androidCompileSdkVersion = 22
+    androidTargetSdkVersion = 21
+    androidCompileSdkVersion = 21
 
     //Libraries
     daggerVersion = '2.0'
@@ -26,9 +26,13 @@ ext {
     designVersion = '22.2.1'
 
     //Testing
-//    jUnitVersion = '4.12'
-//    mockitoVersion = '1.10.19'
+    jUnitVersion = '4.12'
+    mockitoVersion = '1.10.19'
+    robolectricVersion = '3.0'
 //    espressoVersion = '2.2'
+//    androidTestRunnerVersion = '0.3'
+    hamcrestVersion = '1.3'
+//    testingSupportLibVersion = '0.1'
 
 
     presentationDependencies = [
@@ -41,7 +45,7 @@ ext {
             javaxAnnotation: "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
             appCompat      : "com.android.support:appcompat-v7:${appCompatVersion}",
             design         : "com.android.support:design:${designVersion}",
-            gson              : "com.google.code.gson:gson:${gsonVersion}",
+            gson           : "com.google.code.gson:gson:${gsonVersion}",
     ]
 
     domainDependencies = [
@@ -61,6 +65,15 @@ ext {
             javaxAnnotation   : "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
             androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
             retrofit          : "com.squareup.retrofit:retrofit:${retrofitVersion}",
+    ]
+
+    dataTestDependencies = [
+            junit               : "junit:junit:${jUnitVersion}",
+            mockito             : "org.mockito:mockito-core:${mockitoVersion}",
+//            androidTestRunner   : "com.android.support.test:runner:${androidTestRunnerVersion}",
+            hamcrest            : "org.hamcrest:hamcrest-library:${hamcrestVersion}",
+            robolectric         :"org.robolectric:robolectric:${robolectricVersion}",
+//            espresso: "org.robolectric:robolectric:${espressoVersion}",
     ]
 
 }

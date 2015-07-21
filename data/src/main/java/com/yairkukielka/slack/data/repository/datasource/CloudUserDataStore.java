@@ -33,13 +33,14 @@ public class CloudUserDataStore implements UserDataStore {
     }
 
     @Override
-    public Observable<List<User>> getUserEntityList() {
-        return this.userApi.getUserList();
-                //TODO save to disk .doOnNext(users -> CloudUserDataStore.this.userCache.put(users));
+    public Observable<List<User>> getUserList() {
+        return this.userApi.getUserList()
+                // save the user list in diskCache
+                .doOnNext(users -> userCache.evictAndPutAll(users));
     }
 
-//    @Override
-//    public Observable<UserEntity> getUserEntityDetails(final String userId) {
-//        return this.userApi.getUserEntityById(userId);
-//    }
+    @Override
+    public Observable<User> getUserDetails(final String userId) {
+        return this.userApi.getUserById(userId);
+    }
 }

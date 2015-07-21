@@ -1,6 +1,5 @@
 package com.yairkukielka.slack.data.net;
 
-import com.yairkukielka.slack.data.entity.UserEntity;
 import com.yairkukielka.slack.domain.User;
 
 import java.util.List;
@@ -19,15 +18,15 @@ public interface UserApi {
     String TOKEN_PARAM_NAME = "token";
 
     /**
-     * Retrieves an {@link Observable} which will emit a List of {@link UserEntity}.
+     * Retrieves an {@link Observable} which will emit a List of {@link User}.
      */
     Observable<List<User>> getUserList();
 
 
     /**
-     * Retrieves an {@link Observable} which will emit a {@link UserEntity}.
+     * Retrieves an {@link Observable} which will emit a {@link User}.
      *
      * @param userId The user id used to get user data.
      */
-//    Observable<User> getUserById(String userId);
+    Observable<User> getUserById(String userId);
 }
