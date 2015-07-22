@@ -1,4 +1,4 @@
-package com.yairkukielka.slack.presentation.internal.di.navigation;
+package com.yairkukielka.slack.presentation.navigation;
 
 import android.content.Context;
 import android.content.Intent;

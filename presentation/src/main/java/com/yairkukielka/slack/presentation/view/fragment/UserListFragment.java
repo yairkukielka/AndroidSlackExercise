@@ -187,4 +187,5 @@ public class UserListFragment extends BaseFragment implements UserListView {
     public interface UserListListener {
         void onUserClicked(final UserModel userModel);
     }
+
 }

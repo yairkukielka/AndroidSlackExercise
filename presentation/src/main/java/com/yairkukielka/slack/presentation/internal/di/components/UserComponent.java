@@ -3,6 +3,7 @@ package com.yairkukielka.slack.presentation.internal.di.components;
 import com.yairkukielka.slack.presentation.internal.di.PerActivity;
 import com.yairkukielka.slack.presentation.internal.di.modules.ActivityModule;
 import com.yairkukielka.slack.presentation.internal.di.modules.UserModule;
+import com.yairkukielka.slack.presentation.view.fragment.UserDetailsFragment;
 import com.yairkukielka.slack.presentation.view.fragment.UserListFragment;
 
 import dagger.Component;
@@ -16,5 +17,5 @@ import dagger.Component;
 public interface UserComponent extends ActivityComponent {
     void inject(UserListFragment userListFragment);
 
-    //void inject(UserDetailsFragment userDetailsFragment);
+    void inject(UserDetailsFragment userDetailsFragment);
 }
