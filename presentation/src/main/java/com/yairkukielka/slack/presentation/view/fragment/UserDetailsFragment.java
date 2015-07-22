@@ -1,6 +1,7 @@
 package com.yairkukielka.slack.presentation.view.fragment;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,7 +114,8 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     @Override
     public void renderUser(UserModel user) {
         if (user != null) {
-            this.imageLoader.load(user.getImage192(), iv_cover);
+            Drawable niceCatPlaceholder = getResources().getDrawable(R.drawable.placeholder);
+            this.imageLoader.load(user.getImage192(), iv_cover, niceCatPlaceholder);
             this.tv_realname.setText(user.getRealName());
             this.tv_name.setText(user.getName());
             this.tv_title.setText(user.getTitle());
