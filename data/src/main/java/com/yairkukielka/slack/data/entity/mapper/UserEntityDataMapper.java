@@ -2,6 +2,7 @@ package com.yairkukielka.slack.data.entity.mapper;
 
 
 import com.yairkukielka.slack.data.entity.UserEntity;
+import com.yairkukielka.slack.data.entity.UserProfile;
 import com.yairkukielka.slack.domain.User;
 
 import java.util.ArrayList;
@@ -33,6 +34,14 @@ public class UserEntityDataMapper {
         if (userEntity != null) {
             user = new User(userEntity.getId());
             user.setName(userEntity.getName());
+            user.setRealName(userEntity.getRealName());
+            UserProfile profile = userEntity.getProfile();
+            if (profile != null) {
+                user.setTitle(profile.getTitle());
+                user.setImage48(profile.getImage48());
+                user.setImage72(profile.getImage72());
+                user.setImage192(profile.getImage192());
+            }
         }
 
         return user;

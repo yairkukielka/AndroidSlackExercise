@@ -7,11 +7,11 @@ import com.google.gson.annotations.SerializedName;
  */
 public class UserEntity {
 
-    @SerializedName("id")
     private String id;
-
-    @SerializedName("name")
     private String name;
+    @SerializedName("real_name")
+    private String realName;
+    private UserProfile profile;
 
 
     public UserEntity() {
@@ -34,6 +34,22 @@ public class UserEntity {
         this.name = name;
     }
 
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public UserProfile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(UserProfile profile) {
+        this.profile = profile;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -41,6 +57,8 @@ public class UserEntity {
         stringBuilder.append("***** User Entity Details *****\n");
         stringBuilder.append("id=" + this.getId() + "\n");
         stringBuilder.append("name=" + this.getName() + "\n");
+        stringBuilder.append("real_name=" + this.getRealName() + "\n");
+        stringBuilder.append("profile=" + ((this.getProfile() != null) ? getProfile().toString() : "") + "\n");
         stringBuilder.append("*******************************");
 
         return stringBuilder.toString();

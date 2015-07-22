@@ -52,7 +52,7 @@ public class UserDataStoreFactory {
     }
 
     /**
-     * Create {@link UserDataStore} to retrieve data from the Cloud.
+     * Create {@link UserDataStore} to retrieve data from the disk.
      */
     public UserDataStore getDiskDataStore() {
         return diskUserDataStore;

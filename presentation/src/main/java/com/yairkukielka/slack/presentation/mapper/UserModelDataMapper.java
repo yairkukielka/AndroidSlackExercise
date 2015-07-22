@@ -33,6 +33,7 @@ public class UserModelDataMapper {
         }
         UserModel userModel = new UserModel(user.getId());
         userModel.setName(user.getName());
+
         return userModel;
     }
 
