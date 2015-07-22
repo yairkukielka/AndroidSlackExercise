@@ -3,6 +3,9 @@ package com.yairkukielka.slack.presentation.internal.di.modules;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.picasso.OkHttpDownloader;
+import com.squareup.picasso.Picasso;
 import com.yairkukielka.slack.data.cache.UserCache;
 import com.yairkukielka.slack.data.cache.UserCacheImpl;
 import com.yairkukielka.slack.data.executor.JobExecutor;
@@ -14,6 +17,8 @@ import com.yairkukielka.slack.domain.executor.ThreadExecutor;
 import com.yairkukielka.slack.domain.repository.UserRepository;
 import com.yairkukielka.slack.presentation.AndroidApplication;
 import com.yairkukielka.slack.presentation.UIThread;
+import com.yairkukielka.slack.presentation.imageloader.ImageLoader;
+import com.yairkukielka.slack.presentation.imageloader.PicassoImageLoader;
 import com.yairkukielka.slack.presentation.internal.di.navigation.Navigator;
 
 import javax.inject.Singleton;
@@ -80,4 +85,24 @@ public class ApplicationModule {
         return userApi;
     }
 
+    @Provides
+    @Singleton
+    OkHttpClient provideOkHttpClient() {
+        return new OkHttpClient();
+    }
+
+    @Provides
+    @Singleton
+    Picasso providePicasso(OkHttpClient okHttpClient) {
+        Picasso.Builder builder = new Picasso.Builder(this.application);
+        //Picasso will use the okhttpClient
+        builder.downloader(new OkHttpDownloader(okHttpClient));
+        return builder.build();
+    }
+
+    @Provides
+    @Singleton
+    ImageLoader provideImageLoader(Picasso picasso) {
+        return new PicassoImageLoader(picasso);
+    }
 }

@@ -6,11 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yairkukielka.slack.presentation.R;
-import com.yairkukielka.slack.presentation.component.AutoLoadImageView;
+import com.yairkukielka.slack.presentation.imageloader.ImageLoader;
 import com.yairkukielka.slack.presentation.internal.di.components.UserComponent;
 import com.yairkukielka.slack.presentation.model.UserModel;
 import com.yairkukielka.slack.presentation.presenter.UserDetailsPresenter;
@@ -30,8 +31,10 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     private static final String ARGUMENT_KEY_USER_ID = "ARGUMENT_USER_ID";
     @Inject
     UserDetailsPresenter userDetailsPresenter;
+    @Inject
+    ImageLoader imageLoader;
     @Bind(R.id.iv_cover)
-    AutoLoadImageView iv_cover;
+    ImageView iv_cover;
     @Bind(R.id.tv_realname)
     TextView tv_realname;
     @Bind(R.id.tv_name)
@@ -110,7 +113,7 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     @Override
     public void renderUser(UserModel user) {
         if (user != null) {
-            this.iv_cover.setImageUrl(user.getImage192());
+            this.imageLoader.load(user.getImage192(), iv_cover);
             this.tv_realname.setText(user.getRealName());
             this.tv_name.setText(user.getName());
             this.tv_title.setText(user.getTitle());

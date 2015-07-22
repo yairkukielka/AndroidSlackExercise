@@ -5,6 +5,7 @@ import android.content.Context;
 import com.yairkukielka.slack.domain.executor.PostExecutionThread;
 import com.yairkukielka.slack.domain.executor.ThreadExecutor;
 import com.yairkukielka.slack.domain.repository.UserRepository;
+import com.yairkukielka.slack.presentation.imageloader.ImageLoader;
 import com.yairkukielka.slack.presentation.internal.di.modules.ApplicationModule;
 import com.yairkukielka.slack.presentation.view.activity.BaseActivity;
 
@@ -28,4 +29,6 @@ public interface ApplicationComponent {
     PostExecutionThread postExecutionThread();
 
     UserRepository userRepository();
+
+    ImageLoader imageLoader();
 }

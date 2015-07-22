@@ -1,6 +1,7 @@
 package com.yairkukielka.slack.data.net;
 
 import com.google.gson.Gson;
+import com.squareup.okhttp.OkHttpClient;
 import com.yairkukielka.data.BuildConfig;
 import com.yairkukielka.slack.data.entity.SlackResponseUser;
 import com.yairkukielka.slack.data.entity.SlackResponseUserList;
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import retrofit.RestAdapter;
+import retrofit.client.OkClient;
 import retrofit.converter.GsonConverter;
 import rx.Observable;
 import rx.functions.Func1;
@@ -37,7 +39,7 @@ public class UserApiImpl implements UserApi {
      * @param userEntityDataMapper {@link UserEntityDataMapper}.
      */
     @Inject
-    public UserApiImpl(Gson gson, UserEntityDataMapper userEntityDataMapper) {
+    public UserApiImpl(Gson gson, OkHttpClient okhttpClient, UserEntityDataMapper userEntityDataMapper) {
         this.userEntityDataMapper = userEntityDataMapper;
 
         RestAdapter.LogLevel logLevel = BuildConfig.DEBUG ? RestAdapter.LogLevel.FULL : RestAdapter.LogLevel.NONE;
@@ -47,6 +49,7 @@ public class UserApiImpl implements UserApi {
                 .setLogLevel(logLevel)
                 .setRequestInterceptor(request -> request.addQueryParam(UserApi.TOKEN_PARAM_NAME, AUTH_TOKEN))
                 .setConverter(new GsonConverter(gson))
+                .setClient(new OkClient(okhttpClient))
                 .build();
 
         slackRestAdapter = restAdapter.create(SlackRestAdapter.class);

@@ -12,7 +12,7 @@ ext {
     androidCompileSdkVersion = 21
 
     //Libraries
-    daggerVersion = '2.0'
+    daggerVersion = '2.0.1'
     butterKnifeVersion = '7.0.1'
     recyclerViewVersion = '22.2.1'
     rxJavaVersion = '1.0.12'
@@ -24,6 +24,7 @@ ext {
     androidAnnotationsVersion = '22.2.1'
     appCompatVersion = '22.2.1'
     designVersion = '22.2.1'
+    picassoVersion = '2.5.2'
 
     //Testing
     jUnitVersion = '4.12'
@@ -46,6 +47,7 @@ ext {
             appCompat      : "com.android.support:appcompat-v7:${appCompatVersion}",
             design         : "com.android.support:design:${designVersion}",
             gson           : "com.google.code.gson:gson:${gsonVersion}",
+            picasso        : "com.squareup.picasso:picasso:${picassoVersion}",
     ]
 
     domainDependencies = [

@@ -19,4 +19,5 @@ import dagger.Component;
 public interface ActivityComponent {
     //Exposed to sub-graphs.
     Activity activity();
+
 }

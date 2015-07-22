@@ -15,6 +15,7 @@
     <!-- View user details -->
     <string name="view_text_name">Name:</string>
     <string name="view_text_title">Title:</string>
+    <string name="iv_cover_desc">cover image</string>
 
     <string name="string_content_description">Non accessible view</string>
 

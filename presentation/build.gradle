@@ -87,6 +87,6 @@ dependencies {
     compile presentationDependencies.appCompat
     compile presentationDependencies.design
     compile presentationDependencies.gson
+    compile presentationDependencies.picasso
     provided presentationDependencies.javaxAnnotation
-
 }
