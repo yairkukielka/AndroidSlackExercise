@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/lv_row_padding"
-    tools:ignore="UseCompoundDrawables"
-    android:gravity="center_horizontal">
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="@dimen/grid_icon_width"
-        android:layout_height="@dimen/grid_icon_width"
-        android:contentDescription="@string/string_content_description"
-        android:paddingLeft="@dimen/grid_icon_padding"
-        android:paddingRight="@dimen/grid_icon_padding"
-        android:src="@mipmap/ic_launcher" />
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:textSize="@dimen/grid_text_size" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/lv_row_padding"
+        tools:ignore="UseCompoundDrawables">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/grid_icon_width"
+            android:layout_height="@dimen/grid_icon_width"
+            android:contentDescription="@string/string_content_description"
+            android:paddingLeft="@dimen/grid_icon_padding"
+            android:paddingRight="@dimen/grid_icon_padding"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textSize="@dimen/grid_text_size" />
+
+    </LinearLayout>
+</FrameLayout>
