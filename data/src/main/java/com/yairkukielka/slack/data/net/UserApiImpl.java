@@ -73,7 +73,7 @@ public class UserApiImpl implements UserApi {
     private final Func1<SlackResponseUser, User> transformResponseToUser =
             slackResponseUser -> {
                 if (slackResponseUser.getUser() != null) {
-                    UserApiImpl.this.userEntityDataMapper.transform(slackResponseUser.getUser());
+                    return UserApiImpl.this.userEntityDataMapper.transform(slackResponseUser.getUser());
                 }
                 return null;
             };
