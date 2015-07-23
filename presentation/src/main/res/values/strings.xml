@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Android Slack Exercise</string>
-    <string name="change_view">Change view</string>
-
-
-
-
     <string name="activity_title_user_list">Users List</string>
     <string name="activity_title_user_details">User Details</string>
 

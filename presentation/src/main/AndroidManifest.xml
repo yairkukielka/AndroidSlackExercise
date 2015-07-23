@@ -23,7 +23,14 @@
 
         <activity
             android:name=".view.activity.UserDetailsActivity"
-            android:label="@string/activity_title_user_details" />
+            android:label="@string/activity_title_user_details"
+            android:parentActivityName=".view.activity.UserListActivity">
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".view.activity.UserListActivity" />
+        </activity>
+
     </application>
 
 </manifest>

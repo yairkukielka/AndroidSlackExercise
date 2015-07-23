@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="@dimen/lv_row_padding"
-    tools:ignore="UseCompoundDrawables"
-    android:background="?android:attr/selectableItemBackground">
+    tools:ignore="UseCompoundDrawables">
 
     <ImageView
         android:id="@+id/avatar"

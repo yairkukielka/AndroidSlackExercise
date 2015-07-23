@@ -121,8 +121,6 @@ public class UserListFragment extends BaseFragment implements UserListView {
     }
 
     private void setupUI() {
-//        this.usersLayoutManager = new UsersLinearLayoutManager(getActivity());
-
         this.rv_users.setItemAnimator(new DefaultItemAnimator());
         this.usersLayoutManager = new UsersGridLayoutManager(getActivity(),
                 getResources().getInteger(R.integer.users_grid_span_count));

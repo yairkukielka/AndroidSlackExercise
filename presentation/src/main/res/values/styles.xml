@@ -1,8 +1,5 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar"/>
-
     <style name="AppTheme.ProgressBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -26,13 +23,14 @@
         <item name="android:textSize">@dimen/header_text_size</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@android:color/background_light</item>
+        <!--<item name="android:background">@android:color/</item>-->
     </style>
 
     <style name="AppTheme.TextViewTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/header_margin</item>
+        <item name="android:textSize">@dimen/label_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
 

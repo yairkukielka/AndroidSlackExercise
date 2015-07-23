@@ -3,11 +3,14 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!--User Header stuff-->
-    <dimen name="header_text_size">26sp</dimen>
-    <dimen name="header_margin">0dp</dimen>
-    <dimen name="iv_cover_height">140dp</dimen>
+    <!-- User details -->
     <dimen name="user_details_top_margin">5dp</dimen>
+    <!--User Header stuff-->
+    <dimen name="header_text_size">30sp</dimen>
+    <dimen name="label_text_size">24sp</dimen>
+    <dimen name="text_size">22sp</dimen>
+    <dimen name="header_margin">3dp</dimen>
+    <dimen name="iv_cover_height">140dp</dimen>
 
     <!--Listview rows stuff-->
     <dimen name="lv_row_padding">5dp</dimen>

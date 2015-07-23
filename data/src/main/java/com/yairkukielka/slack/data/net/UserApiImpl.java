@@ -27,7 +27,6 @@ import rx.functions.Func1;
 @Singleton
 public class UserApiImpl implements UserApi {
 
-    // TODO move to gradle.properties
     private static final String AUTH_TOKEN = BuildConfig.AUTH_TOKEN;
     private SlackRestAdapter slackRestAdapter;
     private final UserEntityDataMapper userEntityDataMapper;
