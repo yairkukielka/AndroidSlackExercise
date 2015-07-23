@@ -3,6 +3,7 @@ package com.yairkukielka.slack.presentation.view.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -38,6 +39,8 @@ public class UserListFragment extends BaseFragment implements UserListView {
     UserListPresenter userListPresenter;
     @Inject
     ImageLoader imageLoader;
+    @Bind (R.id.users_swipe_refresh_layout)
+    SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.rv_users)
     RecyclerView rv_users;
     @Bind(R.id.rl_progress)
@@ -128,18 +131,26 @@ public class UserListFragment extends BaseFragment implements UserListView {
         this.usersAdapter = new UsersAdapter(getActivity(), imageLoader, new ArrayList<UserModel>());
         this.usersAdapter.setOnItemClickListener(onItemClickListener);
         this.rv_users.setAdapter(usersAdapter);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadUserList();
+            }
+        });
     }
 
     @Override
     public void showLoading() {
         this.rl_progress.setVisibility(View.VISIBLE);
         this.getActivity().setProgressBarIndeterminateVisibility(true);
+        mSwipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void hideLoading() {
         this.rl_progress.setVisibility(View.GONE);
         this.getActivity().setProgressBarIndeterminateVisibility(false);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
