@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:contentDescription="@string/iv_cover_desc"
+            android:contentDescription="@string/string_content_description"
             android:background="@android:color/background_light">
 
             <ImageView
@@ -24,7 +24,7 @@
                 android:layout_width="@dimen/iv_cover_height"
                 android:layout_height="@dimen/iv_cover_height"
                 android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/user_image_desc" />
+                android:contentDescription="@string/string_content_description" />
 
             <TextView
                 android:id="@+id/tv_realname"

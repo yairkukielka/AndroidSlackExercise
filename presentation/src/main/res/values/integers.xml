@@ -1,0 +1,5 @@
+<resources>
+
+    <integer name="users_grid_span_count">1</integer>
+
+</resources>

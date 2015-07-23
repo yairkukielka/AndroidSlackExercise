@@ -70,7 +70,6 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
 
         View fragmentView = inflater.inflate(R.layout.fragment_user_details, container, false);
         ButterKnife.bind(this, fragmentView);
-
         return fragmentView;
     }
 
