@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.yairkukielka.slack.presentation.R;
+import com.yairkukielka.slack.presentation.TransitionOptions;
 import com.yairkukielka.slack.presentation.internal.di.HasComponent;
 import com.yairkukielka.slack.presentation.internal.di.components.DaggerUserComponent;
 import com.yairkukielka.slack.presentation.internal.di.components.UserComponent;
@@ -51,7 +52,7 @@ public class UserListActivity extends BaseActivity implements HasComponent<UserC
     }
 
     @Override
-    public void onUserClicked(UserModel userModel) {
-        this.navigator.navigateToUserDetails(this, userModel.getId());
+    public void onUserClicked(UserModel userModel, TransitionOptions options) {
+        this.navigator.navigateToUserDetails(this, userModel.getId(), options);
     }
 }

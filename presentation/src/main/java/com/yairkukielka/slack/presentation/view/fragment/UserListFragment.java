@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.yairkukielka.slack.presentation.R;
+import com.yairkukielka.slack.presentation.TransitionOptions;
 import com.yairkukielka.slack.presentation.adapter.UsersAdapter;
 import com.yairkukielka.slack.presentation.adapter.UsersGridLayoutManager;
 import com.yairkukielka.slack.presentation.imageloader.ImageLoader;
@@ -55,9 +56,9 @@ public class UserListFragment extends BaseFragment implements UserListView {
     private UsersAdapter.OnItemClickListener onItemClickListener =
             new UsersAdapter.OnItemClickListener() {
                 @Override
-                public void onUserItemClicked(UserModel userModel) {
+                public void onUserItemClicked(UserModel userModel, TransitionOptions options) {
                     if (UserListFragment.this.userListPresenter != null && userModel != null) {
-                        UserListFragment.this.userListPresenter.onUserClicked(userModel);
+                        UserListFragment.this.userListPresenter.onUserClicked(userModel, options);
                     }
                 }
             };
@@ -169,9 +170,9 @@ public class UserListFragment extends BaseFragment implements UserListView {
     }
 
     @Override
-    public void viewUser(UserModel userModel) {
+    public void viewUser(UserModel userModel, TransitionOptions options) {
         if (this.userListListener != null) {
-            this.userListListener.onUserClicked(userModel);
+            this.userListListener.onUserClicked(userModel, options);
         }
     }
 
@@ -201,7 +202,7 @@ public class UserListFragment extends BaseFragment implements UserListView {
      * Interface for listening user list events.
      */
     public interface UserListListener {
-        void onUserClicked(final UserModel userModel);
+        void onUserClicked(final UserModel userModel, TransitionOptions options);
     }
 
 }

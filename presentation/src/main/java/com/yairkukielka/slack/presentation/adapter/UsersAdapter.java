@@ -1,14 +1,17 @@
 package com.yairkukielka.slack.presentation.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.yairkukielka.slack.presentation.R;
+import com.yairkukielka.slack.presentation.TransitionOptions;
 import com.yairkukielka.slack.presentation.imageloader.ImageLoader;
 import com.yairkukielka.slack.presentation.model.UserModel;
 
@@ -20,17 +23,19 @@ import java.util.List;
  */
 public class UsersAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
+    private Activity activity;
     private ImageLoader imageLoader;
     private final LayoutInflater layoutInflater;
     private List<UserModel> usersCollection;
     private OnItemClickListener onItemClickListener;
     private final Resources resources;
 
-    public UsersAdapter(Context context, ImageLoader imageLoader, Collection<UserModel> usersCollection) {
-        this.resources = context.getResources();
+    public UsersAdapter(Activity activity, ImageLoader imageLoader, Collection<UserModel> usersCollection) {
+        this.activity = activity;
+        this.resources = activity.getResources();
         this.imageLoader = imageLoader;
         this.validateUsersCollection(usersCollection);
-        this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.usersCollection = (List<UserModel>) usersCollection;
     }
 
@@ -46,7 +51,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UserViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(UserViewHolder holder, final int position) {
+    public void onBindViewHolder(final UserViewHolder holder, final int position) {
         final UserModel user = this.usersCollection.get(position);
         holder.tv_name.setText(user.getName());
 
@@ -57,7 +62,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UserViewHolder> {
             @Override
             public void onClick(View v) {
                 if (UsersAdapter.this.onItemClickListener != null) {
-                    UsersAdapter.this.onItemClickListener.onUserItemClicked(user);
+                    ActivityOptionsCompat activityOptions =
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(activity, holder.iv_avatar,
+                                    UsersAdapter.this.resources.getString(R.string.transition_image));
+                    TransitionOptions options = new TransitionOptions(activityOptions);
+                    UsersAdapter.this.onItemClickListener.onUserItemClicked(user, options);
                 }
             }
         });
@@ -85,7 +94,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UserViewHolder> {
     }
 
     public interface OnItemClickListener {
-        void onUserItemClicked(UserModel userModel);
+        void onUserItemClicked(UserModel userModel, TransitionOptions options);
     }
 
 }

@@ -7,6 +7,7 @@ import com.yairkukielka.slack.domain.exception.DefaultErrorBundle;
 import com.yairkukielka.slack.domain.exception.ErrorBundle;
 import com.yairkukielka.slack.domain.interactor.DefaultSubscriber;
 import com.yairkukielka.slack.domain.interactor.UseCase;
+import com.yairkukielka.slack.presentation.TransitionOptions;
 import com.yairkukielka.slack.presentation.exception.ErrorMessageFactory;
 import com.yairkukielka.slack.presentation.internal.di.PerActivity;
 import com.yairkukielka.slack.presentation.mapper.UserModelDataMapper;
@@ -69,8 +70,8 @@ public class UserListPresenter extends DefaultSubscriber<List<User>> implements 
         this.getUserList();
     }
 
-    public void onUserClicked(UserModel userModel) {
-        this.viewListView.viewUser(userModel);
+    public void onUserClicked(UserModel userModel, TransitionOptions options) {
+        this.viewListView.viewUser(userModel, options);
     }
 
     private void showViewLoading() {

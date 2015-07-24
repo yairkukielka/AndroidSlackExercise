@@ -1,5 +1,6 @@
 package com.yairkukielka.slack.presentation.view;
 
+import com.yairkukielka.slack.presentation.TransitionOptions;
 import com.yairkukielka.slack.presentation.model.UserModel;
 
 import java.util.Collection;
@@ -20,6 +21,7 @@ public interface UserListView extends LoadDataView {
      * View a {@link UserModel} profile/details.
      *
      * @param userModel The user that will be shown.
+     * @param options Options for the view transition
      */
-    void viewUser(UserModel userModel);
+    void viewUser(UserModel userModel, TransitionOptions options);
 }
