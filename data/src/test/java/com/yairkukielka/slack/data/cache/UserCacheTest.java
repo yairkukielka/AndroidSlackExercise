@@ -63,6 +63,9 @@ public class UserCacheTest extends ApplicationTestCase {
         //save the users
         userCache.evictAndPutAll(listToWrite);
 
+        //wait, since the saving process is asynchronous
+        Thread.sleep(1000);
+
         //retrieve the users
         userCache.getAll().subscribe(testSubscriber);
 
