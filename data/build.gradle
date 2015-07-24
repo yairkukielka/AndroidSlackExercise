@@ -64,10 +64,7 @@ dependencies {
     compile dataDependencies.androidAnnotations
     compile dataDependencies.retrofit
 
-    testCompile testDependencies.mockito
     testCompile testDependencies.junit
     testCompile testDependencies.robolectric
 
-//    androidTestCompile dataTestDependencies.androidTestRunner
-//    androidTestCompile dataTestDependencies.hamcrest
 }

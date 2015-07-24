@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Adaptar that manages a collection of {@link UserModel}.
+ * Adapter that manages a collection of {@link UserModel}.
  */
 public class UsersAdapter extends RecyclerView.Adapter<UserViewHolder> {
 

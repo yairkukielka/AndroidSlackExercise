@@ -114,7 +114,7 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     public void renderUser(UserModel user) {
         if (user != null) {
             Drawable niceCatPlaceholder = getResources().getDrawable(R.drawable.placeholder);
-            this.imageLoader.load(user.getImage192(), iv_cover, niceCatPlaceholder);
+            this.imageLoader.loadCircular(user.getImage192(), iv_cover, niceCatPlaceholder);
             this.tv_realname.setText(user.getRealName());
             this.tv_name.setText(user.getName());
             this.tv_title.setText(user.getTitle());
