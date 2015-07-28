@@ -23,6 +23,7 @@ Provides the data for the application with a repository pattern:
 1 - The communication towards the internet (net package)
 2 - The communication with the filesystem (cache package)
 
+
 ###Some libraries used
 The libraries used can be found in the buildsystem/dependencies.gradle file.
 1 - Dagger2: for dependency injection
