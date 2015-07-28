@@ -15,21 +15,21 @@ It also includes the dependency injection components and modules.
 #### 2 Domain
 It is the business layer. This module is pure java so that it can be easily tested with traditional java testing techniques and libraries.
 The business logic is divided mainly in two use cases or interactors:
-#####Get the list of users
-#####Get the details of a user
+1 - Get the list of users
+2 - Get the details of a user
 
 #### 3 Data
 Provides the data for the application with a repository pattern:
-#####The communication towards the internet (net package)
-#####The communication with the filesystem (cache package)
+1 - The communication towards the internet (net package)
+2 - The communication with the filesystem (cache package)
 
 ###Some libraries used
 The libraries used can be found in the buildsystem/dependencies.gradle file.
-#####Dagger2: for dependency injection
-#####Butterknife: for view injection
-#####RxJava and RxAndroid: reactive extensions libraries
-#####Gson: Json parsing and POJO serialization
-#####Picasso: for downloading images (it has been hidden in the code behind the ImageLoader interface so it can be easily swaped by Glide)
+1 - Dagger2: for dependency injection
+2 - Butterknife: for view injection
+3 - RxJava and RxAndroid: reactive extensions libraries
+4 - Gson: Json parsing and POJO serialization
+5 - Picasso: for downloading images (it has been hidden in the code behind the ImageLoader interface so it can be easily swaped by Glide)
 
 ###Executing the code
 
@@ -40,5 +40,5 @@ You can try these Gradle/adb commands:
  * `./gradlew runUnitTests` - Execute the data layer tests.
 
 ###Future Improvements
-#####Add more tests to the three modules.
-#####Add a database to swap out the file persistance.
+1 - Add more tests to the three modules.
+2 - Add a database to swap out the file persistance.
