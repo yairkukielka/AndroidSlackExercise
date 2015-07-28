@@ -33,7 +33,6 @@ The libraries used can be found in the buildsystem/dependencies.gradle file.
 5 - Picasso: for downloading images (it has been hidden in the code behind the ImageLoader interface so it can be easily swaped by Glide)
 
 ###Executing the code
-
 You can try these Gradle/adb commands:
 
  * `./gradlew clean build` - Build the entire example and execute unit and integration tests plus lint check.
