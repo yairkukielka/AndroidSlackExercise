@@ -23,7 +23,6 @@ Provides the data for the application with a repository pattern:
  * The communication towards the internet (net package)
  * The communication with the filesystem (cache package)
 
-
 ###Some libraries used
 The libraries used can be found in the buildsystem/dependencies.gradle file.
 
@@ -39,6 +38,8 @@ You can try these Gradle/adb commands:
  * `./gradlew clean build` - Build the entire example and execute unit and integration tests plus lint check.
  * `./gradlew installDebug` - Install the debug apk on the current connected device.
  * `./gradlew runUnitTests` - Execute the data layer tests.
+
+**Note**: The app must be compiled against Java8, since some lambda expressions are used (see [retrolambda](https://github.com/evant/gradle-retrolambda) project for details)
 
 ###Future Improvements
  * Add more tests to the three modules.
