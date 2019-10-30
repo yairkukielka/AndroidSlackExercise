@@ -1,9 +1,9 @@
 apply plugin: 'java'
 
 //noinspection GroovyUnusedAssignment
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
 //noinspection GroovyUnusedAssignment
-targetCompatibility = 1.7
+targetCompatibility = 1.8
 
 configurations {
     provided
@@ -18,10 +18,10 @@ sourceSets {
 dependencies {
     def domainDependencies = rootProject.ext.domainDependencies
 
-    provided domainDependencies.daggerCompiler
-    provided domainDependencies.javaxAnnotation
+    annotationProcessor domainDependencies.daggerCompiler
+    //compileOnly domainDependencies.javaxAnnotation
 
-    compile domainDependencies.dagger
-    compile domainDependencies.rxJava
+    implementation domainDependencies.dagger
+    implementation domainDependencies.rxJava
 
 }

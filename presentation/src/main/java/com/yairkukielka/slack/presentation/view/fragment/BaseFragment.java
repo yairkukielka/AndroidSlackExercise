@@ -1,14 +1,15 @@
 package com.yairkukielka.slack.presentation.view.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.yairkukielka.slack.presentation.internal.di.HasComponent;
 
 
 /**
- * Base {@link android.app.Fragment} class for every fragment in this application.
+ * Base {@link androidx.fragment.app.Fragment} class for every fragment in this application.
  */
 public abstract class BaseFragment extends Fragment {
 

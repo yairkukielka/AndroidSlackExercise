@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+//apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "23.0.0 rc2"
+    compileSdkVersion 27
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.yairkukielka.slack"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -21,9 +21,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:design:22.2.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
 }
 
 
@@ -32,7 +32,7 @@ android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
-    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+    buildToolsVersion = androidBuildToolsVersion
 
     defaultConfig {
         minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
@@ -46,8 +46,9 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        incremental = false
     }
 
     packagingOptions {
@@ -75,18 +76,20 @@ android {
 dependencies {
     def presentationDependencies = rootProject.ext.presentationDependencies
 
-    compile project(':domain')
-    compile project(':data')
+    implementation project(':domain')
+    implementation project(':data')
 
-    apt presentationDependencies.daggerCompiler
-    compile presentationDependencies.dagger
-    compile presentationDependencies.butterKnife
-    compile presentationDependencies.recyclerView
-    compile presentationDependencies.rxJava
-    compile presentationDependencies.rxAndroid
-    compile presentationDependencies.appCompat
-    compile presentationDependencies.design
-    compile presentationDependencies.gson
-    compile presentationDependencies.picasso
-    provided presentationDependencies.javaxAnnotation
+    annotationProcessor presentationDependencies.daggerCompiler
+    implementation presentationDependencies.dagger
+    annotationProcessor presentationDependencies.butterKnifeCompiler
+    implementation presentationDependencies.butterKnife
+    implementation presentationDependencies.recyclerView
+    implementation presentationDependencies.rxJava
+    implementation presentationDependencies.rxAndroid
+    implementation presentationDependencies.appCompat
+    implementation presentationDependencies.design
+    implementation presentationDependencies.gson
+    implementation presentationDependencies.picasso
+    implementation presentationDependencies.okHttp
+    //compileOnly presentationDependencies.javaxAnnotation
 }

@@ -1,10 +1,10 @@
 package com.yairkukielka.slack.presentation.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 /**
- * Layout manager to position items inside a {@link android.support.v7.widget.RecyclerView}.
+ * Layout manager to position items inside a {@link androidx.recyclerview.widget.GridLayoutManager}.
  */
 public class UsersGridLayoutManager extends GridLayoutManager {
     public UsersGridLayoutManager(Context context, int spanCount) {

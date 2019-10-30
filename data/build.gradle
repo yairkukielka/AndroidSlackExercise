@@ -1,25 +1,28 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
+        google()
     }
     dependencies {
-        classpath 'me.tatarka:gradle-retrolambda:3.1.0'
+        //classpath 'me.tatarka:gradle-retrolambda:3.1.0'
     }
 }
 
 repositories {
     mavenCentral()
+    google()
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'me.tatarka.retrolambda'
+//apply plugin: 'com.neenbedankt.android-apt'
+//apply plugin: 'me.tatarka.retrolambda'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
-    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+    buildToolsVersion = androidBuildToolsVersion
 
     defaultConfig {
         //AUTHENTICATION TOKEN FOR SLACK API
@@ -52,19 +55,19 @@ dependencies {
     def dataDependencies = rootProject.ext.dataDependencies
     def testDependencies = rootProject.ext.dataTestDependencies
 
-    compile project(':domain')
+    implementation project(':domain')
 
-    apt dataDependencies.daggerCompiler
-    provided dataDependencies.javaxAnnotation
-    compile dataDependencies.dagger
-    compile dataDependencies.okHttp
-    compile dataDependencies.gson
-    compile dataDependencies.rxJava
-    compile dataDependencies.rxAndroid
-    compile dataDependencies.androidAnnotations
-    compile dataDependencies.retrofit
+    annotationProcessor dataDependencies.daggerCompiler
+    compileOnly dataDependencies.javaxAnnotation
+    implementation dataDependencies.dagger
+    implementation dataDependencies.okHttp
+    implementation dataDependencies.gson
+    implementation dataDependencies.rxJava
+    implementation dataDependencies.rxAndroid
+    implementation dataDependencies.androidAnnotations
+    implementation dataDependencies.retrofit
 
-    testCompile testDependencies.junit
-    testCompile testDependencies.robolectric
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.robolectric
 
 }

@@ -1,9 +1,9 @@
 package com.yairkukielka.slack.presentation.view.activity;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.yairkukielka.slack.presentation.AndroidApplication;
 import com.yairkukielka.slack.presentation.internal.di.components.ApplicationComponent;
@@ -33,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param fragment        The fragment to be added.
      */
     protected void addFragment(int containerViewId, Fragment fragment) {
-        FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(containerViewId, fragment);
         fragmentTransaction.commit();
     }

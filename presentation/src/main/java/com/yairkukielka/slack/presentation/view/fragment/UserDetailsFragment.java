@@ -20,9 +20,10 @@ import com.yairkukielka.slack.presentation.view.UserDetailsView;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * Fragment that shows details of a certain user.
@@ -34,20 +35,21 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     UserDetailsPresenter userDetailsPresenter;
     @Inject
     ImageLoader imageLoader;
-    @Bind(R.id.iv_cover)
+    @BindView(R.id.iv_cover)
     ImageView iv_cover;
-    @Bind(R.id.tv_realname)
+    @BindView(R.id.tv_realname)
     TextView tv_realname;
-    @Bind(R.id.tv_name)
+    @BindView(R.id.tv_name)
     TextView tv_name;
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tv_title;
-    @Bind(R.id.rl_progress)
+    @BindView(R.id.rl_progress)
     RelativeLayout rl_progress;
-    @Bind(R.id.rl_retry)
+    @BindView(R.id.rl_retry)
     RelativeLayout rl_retry;
-    @Bind(R.id.bt_retry)
+    @BindView(R.id.bt_retry)
     Button bt_retry;
+    private Unbinder unbinder;
     private String userId;
 
     public UserDetailsFragment() {
@@ -69,7 +71,7 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
                              Bundle savedInstanceState) {
 
         View fragmentView = inflater.inflate(R.layout.fragment_user_details, container, false);
-        ButterKnife.bind(this, fragmentView);
+        unbinder = ButterKnife.bind(this, fragmentView);
         return fragmentView;
     }
 
@@ -94,7 +96,7 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 
     @Override

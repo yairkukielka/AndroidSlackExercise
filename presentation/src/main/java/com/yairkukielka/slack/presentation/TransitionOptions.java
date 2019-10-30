@@ -1,6 +1,6 @@
 package com.yairkukielka.slack.presentation;
 
-import android.support.v4.app.ActivityOptionsCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 /**
  * Transition options to navigate between views

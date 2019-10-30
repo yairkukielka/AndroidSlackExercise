@@ -1,6 +1,6 @@
 package com.yairkukielka.slack.presentation.presenter;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.yairkukielka.slack.domain.User;
 import com.yairkukielka.slack.domain.exception.DefaultErrorBundle;

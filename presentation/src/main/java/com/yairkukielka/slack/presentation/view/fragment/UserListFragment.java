@@ -3,9 +3,9 @@ package com.yairkukielka.slack.presentation.view.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +27,10 @@ import java.util.Collection;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * Fragment that shows a list of Users.
@@ -40,26 +41,24 @@ public class UserListFragment extends BaseFragment implements UserListView {
     UserListPresenter userListPresenter;
     @Inject
     ImageLoader imageLoader;
-    @Bind (R.id.users_swipe_refresh_layout)
+    @BindView(R.id.users_swipe_refresh_layout)
     SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.rv_users)
+    @BindView(R.id.rv_users)
     RecyclerView rv_users;
-    @Bind(R.id.rl_progress)
+    @BindView(R.id.rl_progress)
     RelativeLayout rl_progress;
-    @Bind(R.id.rl_retry)
+    @BindView(R.id.rl_retry)
     RelativeLayout rl_retry;
-    @Bind(R.id.bt_retry)
+    @BindView(R.id.bt_retry)
     Button bt_retry;
+    private Unbinder unbinder;
     private UsersAdapter usersAdapter;
     private RecyclerView.LayoutManager usersLayoutManager;
     private UserListListener userListListener;
     private UsersAdapter.OnItemClickListener onItemClickListener =
-            new UsersAdapter.OnItemClickListener() {
-                @Override
-                public void onUserItemClicked(UserModel userModel, TransitionOptions options) {
-                    if (UserListFragment.this.userListPresenter != null && userModel != null) {
-                        UserListFragment.this.userListPresenter.onUserClicked(userModel, options);
-                    }
+            (userModel, options) -> {
+                if (UserListFragment.this.userListPresenter != null && userModel != null) {
+                    UserListFragment.this.userListPresenter.onUserClicked(userModel, options);
                 }
             };
 
@@ -80,7 +79,7 @@ public class UserListFragment extends BaseFragment implements UserListView {
                              Bundle savedInstanceState) {
 
         View fragmentView = inflater.inflate(R.layout.fragment_user_list, container, true);
-        ButterKnife.bind(this, fragmentView);
+        unbinder = ButterKnife.bind(this, fragmentView);
         return fragmentView;
     }
 
@@ -113,7 +112,7 @@ public class UserListFragment extends BaseFragment implements UserListView {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 
     private void initialize() {

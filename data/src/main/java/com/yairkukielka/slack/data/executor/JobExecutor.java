@@ -1,6 +1,6 @@
 package com.yairkukielka.slack.data.executor;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.yairkukielka.slack.domain.executor.ThreadExecutor;
 
@@ -12,8 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-
-;
 
 /**
  * Decorated {@link java.util.concurrent.ThreadPoolExecutor}
